@@ -2,12 +2,21 @@
 
 Slutprojekt programmering 1.
 
-## Vad
+## Breakout
 
-Din uppgift är att planera, genomföra och dokumentera ett programmeringsprojekt.
+Jag ska fortsätta på mitt breakout spel
 
-Du får välja projekt själv, det kan vara något helt nytt eller en vidareutveckling av något som du redan gjort. Kravet är 
-dock att du planerar projektet från början, du får inte slänga in en massa gammal kod.
+Jag vill ha mer fysik i bollen så att den studsar lite bättre.
+Just nu studsar den 90 grader vart den än träffar men jag vill göra så att bollen studsar åt ett specifikt håll
+beroende på vart den träffar plattan.
+
+Jag tänker lägga till mer bricks 
+
+Jag ska göra så att om paddeln missar bollen, så kommer det en "restart" knapp 
+
+Om jag sen har tid kan jag typ lägga till olika svårighetsgrader som Easy Medium Hard
+som då kommer att öka hastigheten på bollen eller göra paddeln smalare.
+
 
 Förslag:
 
