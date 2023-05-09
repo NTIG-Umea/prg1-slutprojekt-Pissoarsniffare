@@ -82,13 +82,11 @@ public class breakout extends Canvas implements Runnable{
             bollVY = -bollVY;
         }
         if (bollY >= paddelY - 10 && bollY <= paddelY && bollX >= paddelX && bollX <= paddelX + 80) {
-            double paddleCenterX = paddelX + 40;
-            double ballCenterX = bollX + 5;
-            double relativeIntersectX = ballCenterX - paddleCenterX;
-            double normalizedRelativeIntersectionX = relativeIntersectX / 40.0;
-            double bounceAngle = normalizedRelativeIntersectionX * Math.PI / 3.0;
-            bollVX = (int) (10.0 * Math.sin(bounceAngle));
-            bollVY = (int) (-10.0 * Math.cos(bounceAngle));
+            int paddleCenterX = paddelX + 40;
+            int distanceFromCenter = bollX - paddleCenterX;
+            double angle = (double) distanceFromCenter / 40.0 * Math.PI / 3.0;
+            bollVX = (int) (10 * Math.sin(angle));
+            bollVY = (int) (-10 * Math.cos(angle));
         }
     }
         public static void main(String[] args){
@@ -188,6 +186,7 @@ public class breakout extends Canvas implements Runnable{
             if (e.getKeyChar() == 'a') {
                 paddelVX = -10;
             }
+
         }
 
         @Override
