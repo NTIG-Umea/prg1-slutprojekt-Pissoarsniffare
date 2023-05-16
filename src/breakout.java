@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferStrategy;
+import java.util.ArrayList;
 
 public class breakout extends Canvas implements Runnable{
     private BufferStrategy bs   ;
@@ -9,8 +10,8 @@ public class breakout extends Canvas implements Runnable{
     private boolean running = false;
     private Thread thread;
 
-    private int WIDTH = 600;
-    private int HEIGHT = 400;
+    private final int WIDTH = 600;
+    private final int HEIGHT = 400;
     private int paddelX = 260;
     private int paddelY = 350;
 
@@ -23,11 +24,29 @@ public class breakout extends Canvas implements Runnable{
 
     private int bollVY = 0;
 
-    private int brickX = 290;
+    private ArrayList<Integer> brickXs = new ArrayList<>();
 
-    private int brickY = 30;
+    private ArrayList<Integer> brickYs = new ArrayList<>();
 
     public breakout() {
+        brickXs.add(15);
+        brickYs.add(30);
+        brickXs.add(80);
+        brickYs.add(30);
+        brickXs.add(145);
+        brickYs.add(30);
+        brickXs.add(210);
+        brickYs.add(30);
+        brickXs.add(275);
+        brickYs.add(30);
+        brickXs.add(340);
+        brickYs.add(30);
+        brickXs.add(405);
+        brickYs.add(30);
+        brickXs.add(470);
+        brickYs.add(30);
+        brickXs.add(535);
+        brickYs.add(30);
         setSize(600,400);
         JFrame frame = new JFrame();
         frame.add(this);
@@ -62,8 +81,10 @@ public class breakout extends Canvas implements Runnable{
         g.setColor(Color.RED);
         g.fillOval(bollX,bollY,10,10);
         g.setColor(Color.green);
-        g.fillRect(brickX,brickY,50,20);
-    }
+        for (int i = 0 ; i < brickXs.size() ; i++) {
+            g.fillRect(brickXs.get(i), brickYs.get(i), 50, 20);
+        }
+        }
 
     private void update() {
         paddelX += paddelVX;
@@ -72,11 +93,19 @@ public class breakout extends Canvas implements Runnable{
         if (bollX < 0 || bollX > WIDTH) {
             bollVX = -bollVX;
         }
+        for (int i = 0; i < brickXs.size(); i++) {
+            int bricktop = brickYs.get(i);
+            int brickbottom = brickYs.get(i) + 20;
+            int brickleft = brickXs.get(i);
+            int brickright = brickXs.get(i) + 50;
+            if (bollX + 10 >= brickleft && bollX <= brickright && bollY +10 >= bricktop && bollY <= brickbottom) {
+                bollVY = -bollVY;
+                brickYs.set(i, -100);
 
-        if (bollY <= brickY + 20 && bollY >= brickY && bollX >= brickX && bollX <= brickX + 40) {
-            bollVY = -bollVY;
-            brickY = -100;
+            }
         }
+
+
 
         if (bollY < 0 || bollY > HEIGHT) {
             bollVY = -bollVY;
@@ -84,7 +113,7 @@ public class breakout extends Canvas implements Runnable{
         if (bollY >= paddelY - 10 && bollY <= paddelY && bollX >= paddelX && bollX <= paddelX + 80) {
             int paddleCenterX = paddelX + 40;
             int distanceFromCenter = bollX - paddleCenterX;
-            double angle = (double) distanceFromCenter / 40.0 * Math.PI / 3.0;
+            double angle = (double) distanceFromCenter / 40.0 * Math.PI / 2.5;
             bollVX = (int) (10 * Math.sin(angle));
             bollVY = (int) (-10 * Math.cos(angle));
         }
@@ -173,7 +202,7 @@ public class breakout extends Canvas implements Runnable{
 
         @Override
         public void keyPressed(KeyEvent e) {
-            if (bollVX == 0) {
+            if (bollVX == 0 && bollVY == 0) {
                 bollVX = -10;
                 bollVY = -10;
             }
