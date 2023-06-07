@@ -32,4 +32,5 @@ Arbetet innehöll flera olika delar som var viktiga för att kunna skapa en fung
 
 ## Sammanfattning
 
-Jag skapade en spelbar Breakout i Java med hjälp av 
+Jag skapade en spelbar version av Breakout i Java med hjälp av Swing-biblioteket. Genom att implementera olika delar, inklusive skapande av spelplan, ritning av paddeln, bollen och brickorna, samt hantering av rörelsen för paddeln och bollen, uppnåddes målet att skapa en fungerande Breakout.
+Jag lärde mig mycket under detta projekt och lyckades till och med skapa en fungerande version av breakout. Det fannas dock också negativa erfarenheter som att bollen inte kunde studsa på sidorna av brickorna. Jag hade också ganksa lite tid så jag hann inte lägga till allt jag ville ha med.
